@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import BrowserForm from "./BrowserForm";
+import WCForm from "./WCForm";
+import FormikDemo from "./FormikDemo";
+import FormikContextDemo from "./FormikContextDemo";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container">
+        <sc-accordion multiple>
+          <sc-accordion-item heading="Formik" active={true}>
+            <div className="row">
+              <div className="col">
+                <h2 style={{ margin: 0 }}>Formik</h2>
+              </div>
+              <sc-button
+                href="https://formik.org/docs/overview"
+                target="_blank"
+              >
+                Docs
+              </sc-button>
+            </div>
+            <FormikDemo />
+          </sc-accordion-item>
+
+          <sc-accordion-item heading="Formik + Yup" active={true}>
+            <div className="row">
+              <div className="col"></div>
+              <sc-button href="https://github.com/jquense/yup" target="_blank">
+                Yup Docs
+              </sc-button>
+            </div>
+            <FormikContextDemo />
+          </sc-accordion-item>
+          <sc-accordion-item heading="Formik Context" active={true}>
+            <div className="row">
+              <div className="col">
+                <h2 style={{ margin: 0 }}>Formik</h2>
+              </div>
+              <sc-button
+                href="https://formik.org/docs/overview"
+                target="_blank"
+              >
+                Docs
+              </sc-button>
+            </div>
+            <FormikDemo />
+          </sc-accordion-item>
+        </sc-accordion>
+      </div>
+    </>
   );
 }
 
