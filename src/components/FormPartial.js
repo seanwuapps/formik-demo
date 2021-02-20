@@ -1,4 +1,4 @@
-import { useFormikContext, ErrorMessage, Field } from "formik";
+import { useFormikContext, ErrorMessage, Field } from 'formik'
 
 const FormPartial = () => {
   const {
@@ -7,7 +7,7 @@ const FormPartial = () => {
     handleChange,
     isSubmitting,
     isValid,
-  } = useFormikContext();
+  } = useFormikContext()
 
   return (
     <>
@@ -15,7 +15,7 @@ const FormPartial = () => {
       <pre>{JSON.stringify(errors)}</pre>
       <div>
         <label htmlFor="email">Email</label>
-        <Field name="email" className="mt-2" />
+        <sc-input type="email" name="email" className="mt-2"></sc-input>
         {/* {errors.email && touched.email && errors.email} */}
         <div className="error">
           <ErrorMessage name="email" />
@@ -33,6 +33,6 @@ const FormPartial = () => {
         Submit
       </button>
     </>
-  );
-};
-export default FormPartial;
+  )
+}
+export default FormPartial

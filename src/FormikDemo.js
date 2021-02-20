@@ -1,38 +1,37 @@
-import React, { useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React, { useEffect } from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 const FormDemo = () => {
   const initialValues = {
-    email: "test@test.com",
-    password: "Test123",
-  };
+    email: 'test@test.com',
+    password: 'Test123',
+  }
 
   const validate = (values) => {
-    const errors = {};
+    const errors = {}
     if (!values.email) {
-      errors.email = "Email is required";
+      errors.email = 'Email is required'
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = "Invalid email address";
+      errors.email = 'Invalid email address'
     }
     if (!values.password) {
-      errors.password = "Password is required";
+      errors.password = 'Password is required'
     }
-    return errors;
-  };
+    return errors
+  }
 
   const onSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
-  };
+      alert(JSON.stringify(values, null, 2))
+      setSubmitting(false)
+    }, 400)
+  }
   return (
     <div>
       <Formik
         initialValues={initialValues}
         validate={validate}
-        onSubmit={onSubmit}
-      >
+        onSubmit={onSubmit}>
         {({
           values,
           errors,
@@ -68,15 +67,14 @@ const FormDemo = () => {
             <button
               class="mt-2"
               type="submit"
-              disabled={isSubmitting && !isValid}
-            >
+              disabled={isSubmitting && !isValid}>
               Submit
             </button>
           </Form>
         )}
       </Formik>
     </div>
-  );
-};
+  )
+}
 
-export default FormDemo;
+export default FormDemo

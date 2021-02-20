@@ -1,13 +1,15 @@
-import BrowserForm from "./BrowserForm";
-import WCForm from "./WCForm";
-import FormikDemo from "./FormikDemo";
-import FormikContextDemo from "./FormikContextDemo";
-
+import NormalForm from './forms/NormalForm'
+import FormikDemo from './FormikDemo'
+import FormikContextDemo from './FormikContextDemo'
+import './App.css'
 function App() {
   return (
-    <>
+    <div className="App">
       <div className="container">
         <sc-accordion multiple>
+          <sc-accordion-item heading="No lib" active={true}>
+            <NormalForm />
+          </sc-accordion-item>
           <sc-accordion-item heading="Formik" active={true}>
             <div className="row">
               <div className="col">
@@ -15,8 +17,7 @@ function App() {
               </div>
               <sc-button
                 href="https://formik.org/docs/overview"
-                target="_blank"
-              >
+                target="_blank">
                 Docs
               </sc-button>
             </div>
@@ -30,26 +31,14 @@ function App() {
                 Yup Docs
               </sc-button>
             </div>
-            <FormikContextDemo />
           </sc-accordion-item>
           <sc-accordion-item heading="Formik Context" active={true}>
-            <div className="row">
-              <div className="col">
-                <h2 style={{ margin: 0 }}>Formik</h2>
-              </div>
-              <sc-button
-                href="https://formik.org/docs/overview"
-                target="_blank"
-              >
-                Docs
-              </sc-button>
-            </div>
-            <FormikDemo />
+            <FormikContextDemo />
           </sc-accordion-item>
         </sc-accordion>
       </div>
-    </>
-  );
+    </div>
+  )
 }
 
-export default App;
+export default App
