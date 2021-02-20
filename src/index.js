@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import 'soft-components/dist/soft-components/soft-components.css'
+import './bootstrap-grid.min.css'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { applyPolyfills, defineCustomElements } from 'soft-components/loader'
-import 'soft-components/dist/soft-components/soft-components.css'
-import './bootstrap-grid.min.css'
 
 ReactDOM.render(
   <React.StrictMode>

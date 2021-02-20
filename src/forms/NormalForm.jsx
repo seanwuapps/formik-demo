@@ -1,84 +1,94 @@
-import React, { useState } from "react";
-import Json from "react-json-view";
+import React, { useState } from 'react'
+import Json from 'react-json-view'
 const NormalForm = () => {
   const [form, setForm] = useState({
     values: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
     errors: {
       email: false,
       password: false,
     },
     isValid: false,
-  });
+  })
 
   const handleChange = (e) => {
-    const name = e.target.name; // use form name to identify key in form.values
-    const value = e.target.value.trim(); // new value
+    const name = e.target.name // use form name to identify key in form.values
+    const value = e.target.value.trim() // new value
 
-    const values = { ...form.values, [name]: value };
+    const values = { ...form.values, [name]: value }
     const errors = {
       ...form.errors,
       [name]: validateField(name, value),
-    };
-    const isValid = checkFormValidity(errors);
+    }
+    const isValid = checkFormValidity(errors)
     setForm({
       ...form,
       values,
       errors,
       isValid,
-    });
-  };
+    })
+  }
 
   // check if all fields has 'false' in errors object
   const checkFormValidity = (errors) => {
-    return Object.keys(errors).every((k) => !errors[k]);
-  };
+    return Object.keys(errors).every((k) => !errors[k])
+  }
 
   const validateField = (name, value) => {
     switch (name) {
-      case "email":
+      case 'email':
         // required
         if (!value.trim()) {
-          return "Email field is required.";
+          return 'Email field is required.'
         }
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         if (!re.test(value)) {
-          return "Email is not valid";
+          return 'Email is not valid'
         }
-        break;
-      case "password":
+        break
+      case 'password':
         // required
         if (!value.trim()) {
-          return "Password field is required.";
+          return 'Password field is required.'
         }
         // must be more than 6 chars
         if (value.length < 6) {
-          return "Password must be at least 6 chars.";
+          return 'Password must be at least 6 chars.'
         }
         // must contain numbers
         if (!/\d/.test(value)) {
-          return "Password must contain numbers";
+          return 'Password must contain numbers'
         }
         // must contain lower case letters
         if (!/[a-z]/.test(value)) {
-          return "Password must contain lowercase letters.";
+          return 'Password must contain lowercase letters.'
         }
         // must contain upper case letters
         if (!/[A-Z]/.test(value)) {
-          return "Password must contain uppercase letters.";
+          return 'Password must contain uppercase letters.'
         }
-        break;
+        break
       default:
-        break;
+        break
     }
-    return false;
-  };
+    return false
+  }
+
+  const submit = () => {
+    if (form.isValid) {
+      alert(JSON.stringify(form.values))
+    }
+  }
 
   return (
-    <form noValidate>
-      <Json src={form} theme="ocean" />
+    <form noValidate autocomplete="chrome-off">
+      <sc-accordion>
+        <sc-accordion-item heading="Form state">
+          <Json src={form} theme="ocean" />
+        </sc-accordion-item>
+      </sc-accordion>
       <label>Email</label>
       <input
         className="engraved-2"
@@ -95,8 +105,12 @@ const NormalForm = () => {
         value={form.values.password}
         onChange={handleChange}
       />
-    </form>
-  );
-};
 
-export default NormalForm;
+      <sc-button block disabled={!form.isValid} onClick={submit}>
+        Save
+      </sc-button>
+    </form>
+  )
+}
+
+export default NormalForm
