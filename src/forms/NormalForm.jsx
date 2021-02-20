@@ -7,8 +7,8 @@ const NormalForm = () => {
       password: '',
     },
     errors: {
-      email: false,
-      password: false,
+      email: null, // use null for untouched state
+      password: null, // validity check will check for === false
     },
     isValid: false,
   })
@@ -33,7 +33,7 @@ const NormalForm = () => {
 
   // check if all fields has 'false' in errors object
   const checkFormValidity = (errors) => {
-    return Object.keys(errors).every((k) => !errors[k])
+    return Object.keys(errors).every((k) => errors[k] === false)
   }
 
   const validateField = (name, value) => {
@@ -96,7 +96,6 @@ const NormalForm = () => {
       <label>Email</label>
       <div className="error">{form.errors.email}</div>
       <input
-        className="engraved-2"
         name="email"
         type="email"
         value={form.values.email}
@@ -105,7 +104,6 @@ const NormalForm = () => {
       <label>Password</label>
       <div className="error">{form.errors.password}</div>
       <input
-        className="engraved-2"
         name="password"
         type="password"
         value={form.values.password}
