@@ -11,11 +11,9 @@ const FormPartial = () => {
 
   return (
     <>
-      <pre>{JSON.stringify(values)}</pre>
-      <pre>{JSON.stringify(errors)}</pre>
       <div>
         <label htmlFor="email">Email</label>
-        <sc-input type="email" name="email" className="mt-2"></sc-input>
+        <input type="email" value={values.email} />
         {/* {errors.email && touched.email && errors.email} */}
         <div className="error">
           <ErrorMessage name="email" />

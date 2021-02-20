@@ -69,6 +69,10 @@ const NormalForm = () => {
         if (!/[A-Z]/.test(value)) {
           return 'Password must contain uppercase letters.'
         }
+        // must contain special characters
+        if (!/[@$!%*#?&]/.test(value)) {
+          return 'Password must contain special characters.'
+        }
         break
       default:
         break
@@ -83,13 +87,14 @@ const NormalForm = () => {
   }
 
   return (
-    <form noValidate autocomplete="chrome-off">
+    <form noValidate autocomplete="nope">
       <sc-accordion>
         <sc-accordion-item heading="Form state">
           <Json src={form} theme="ocean" />
         </sc-accordion-item>
       </sc-accordion>
       <label>Email</label>
+      <div className="error">{form.errors.email}</div>
       <input
         className="engraved-2"
         name="email"
@@ -98,6 +103,7 @@ const NormalForm = () => {
         onChange={handleChange}
       />
       <label>Password</label>
+      <div className="error">{form.errors.password}</div>
       <input
         className="engraved-2"
         name="password"
