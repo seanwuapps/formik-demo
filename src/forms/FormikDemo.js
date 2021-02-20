@@ -33,9 +33,9 @@ const FormDemo = () => {
         {({
           values,
           errors,
-          isSubmitting,
           isValid,
           /*
+          isSubmitting,
           touched,
           handleChange,
           handleBlur,

@@ -89,7 +89,7 @@ const NormalForm = () => {
   return (
     <form noValidate autocomplete="nope">
       <sc-accordion>
-        <sc-accordion-item heading="Form state">
+        <sc-accordion-item heading="Form state" active={true}>
           <Json src={form} theme="ocean" />
         </sc-accordion-item>
       </sc-accordion>
